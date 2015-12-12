@@ -154,8 +154,9 @@ public class BrowserDriver {
                 initOnGrid(gridFactory);
             } else if (whereToRun.equals("localgrid")) {
                 // init grid factory with local hub
-                gridFactory = new GridFactory(Arrays.asList("http://localhost:4444/wd/hub"));
+                gridFactory = new GridFactory(Arrays.asList("http://192.168.99.100:32774/wd/hub"));
                 initOnGrid(gridFactory);
+//                initLocalGrid();
             }
 
             // Maximize a browser window
@@ -225,6 +226,7 @@ public class BrowserDriver {
             mDriver = new InternetExplorerDriver();
         }
     }
+
 
     private static void initOnGrid(GridFactory pGridFactory) throws GridFactoryException {
         if (browserName.equals("firefox")) {

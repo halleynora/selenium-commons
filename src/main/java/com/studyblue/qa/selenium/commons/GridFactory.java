@@ -41,7 +41,7 @@ import com.google.gson.JsonParser;
 public class GridFactory {
 
     private final Logger logger = LoggerFactory.getLogger(GridFactory.class);
-    private static final String HUB_URL_PRIMARY = "http://grid/wd/hub"; // New grid address
+    private static final String HUB_URL_PRIMARY = "http://192.168.99.100:32774/wd/hub"; // New grid address
     private static final Integer TIMEOUT_SECONDS = 120;
     private static List<String> listOfHub;
     private static DesiredCapabilities defaultCapabilities = new DesiredCapabilities();
@@ -148,7 +148,11 @@ public class GridFactory {
             task = new BrowserCreate(capability, hubUrl);
             future = executor.submit(task);
 
-
+//            try {
+//                driver = new RemoteWebDriver(new URL(hubUrl),capability);
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            }
             try {
                 driver = (WebDriver) future.get(GridFactory.TIMEOUT_SECONDS, TimeUnit.SECONDS);
             } catch (TimeoutException e) {
